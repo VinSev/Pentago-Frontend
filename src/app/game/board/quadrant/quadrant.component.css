@@ -1,0 +1,26 @@
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.row {
+  margin: 0;
+}
+
+.circle {
+  position: relative;
+  width: 22%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.circle:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}

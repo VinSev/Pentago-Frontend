@@ -1,0 +1,22 @@
+section {
+  max-width: 100vh;
+  color: #e0e0e0;
+}
+
+.box {
+  position: relative;
+  width: 50%;
+  padding-left: 0;
+  padding-right: 0;
+
+  background-color: #ce181c;
+
+  border: 5px solid #ffffff;
+  border-radius: 15px;
+}
+
+.box:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}

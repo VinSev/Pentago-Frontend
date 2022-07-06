@@ -1,0 +1,6 @@
+<!--This sucks because duplicate code-->
+<div class="content" [ngSwitch]="this.cell?.getCellState()?.constructor?.name">
+  <button type="button" *ngSwitchDefault class="circle" (click)="placeMarble()"></button>
+  <button *ngSwitchCase="'BlackCellState'" class="circle black-marble" (click)="placeMarble()"></button>
+  <button *ngSwitchCase="'WhiteCellState'" class="circle white-marble" (click)="placeMarble()"></button>
+</div>

@@ -1,0 +1,45 @@
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.circle {
+  position: relative;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+
+  background-color: #ce181c;
+
+  border-radius: 50%;
+  border: 4px solid transparent;
+
+  box-shadow: inset 20px 20px 60px #af1418,
+  inset -20px -20px 60px #ed1c20;
+
+  transition-duration: 0.3s;
+}
+
+.circle:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.circle:hover {
+  /*border-color: #630000;*/
+  border-color: #af1418;
+}
+
+.white-marble {
+  background-color: #ffffff;
+  box-shadow: inset -20px -20px 60px #ffffff,
+  inset 20px 20px 60px #4D4D4D;
+}
+
+.black-marble {
+  background-color: #000000;
+  box-shadow: inset -20px -20px 60px #000000,
+  inset 20px 20px 60px #e5e5e5;
+}
