@@ -4,31 +4,14 @@ import {EmptyCellState} from "./cell-states/empty.cell-state";
 export class Cell {
   private cellState: CellState;
 
-  constructor(private quadrantRow: number,
-              private quadrantColumn: number,
-              private cellRow: number,
-              private cellColumn: number) {
+  constructor(private x: number,
+              private y: number,
+              private z: number) {
     this.cellState = new EmptyCellState(this);
   }
 
-  getQuadrantRow(): number {
-    return this.quadrantRow
-  }
-
-  getQuadrantColumn(): number {
-    return this.quadrantColumn;
-  }
-
-  getCellRow(): number {
-    return this.cellRow;
-  }
-
-  getCellColumn(): number {
-    return this.cellColumn;
-  }
-
-  getCoordinatesAsString(): string {
-    return `${this.quadrantRow} ${this.quadrantColumn} ${this.cellRow} ${this.cellColumn}`
+  getCoordinates(): number[] {
+    return [this.x, this.y, this.z];
   }
 
   setCellState(cellState: CellState): void {

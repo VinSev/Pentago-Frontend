@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {Board} from "./board/board.model";
-import {Quadrant} from "./board/quadrant/quadrant.model";
 import {Cell} from "./board/quadrant/cell/cell.model";
 
 @Component({
@@ -9,10 +8,9 @@ import {Cell} from "./board/quadrant/cell/cell.model";
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-  private readonly QUADRANT_ROWS_PER_BOARD: number = 2;
-  private readonly QUADRANTS_PER_ROW: number = 2;
-  private readonly CELL_ROWS_PER_QUADRANT: number = 3;
-  private readonly CELLS_PER_ROW: number = 3
+  private readonly QUADRANTS_PER_BOARD: number = 4;
+  private readonly ROWS_PER_QUADRANT: number = 3;
+  private readonly CELLS_PER_ROW: number = 3;
 
   board: Board;
 
@@ -25,48 +23,40 @@ export class GameComponent implements OnInit {
   }
 
   private buildEmptyBoard(): void {
-    let quadrants: Quadrant[][] = this.buildQuadrants();
-    this.board.setQuadrants(quadrants);
+    let board: Cell[][][] = this.buildQuadrants();
+    this.board.setBoard(board);
   }
 
-  private buildQuadrants(): Quadrant[][] {
-    let quadrants: Quadrant[][] = [];
+  private buildQuadrants(): Cell[][][] {
+    let quadrants: Cell[][][] = [];
 
-    for (let row = 0; row < this.QUADRANT_ROWS_PER_BOARD; row++) {
-      let quadrantRow = [];
-
-      for (let column = 0; column < this.QUADRANTS_PER_ROW; column++) {
-        quadrantRow.push(this.buildQuadrant(row, column));
-      }
-
-      quadrants.push(quadrantRow);
+    for (let x = 0; x < this.QUADRANTS_PER_BOARD; x++) {
+      let quadrant: Cell[][] = this.buildQuadrant(x);
+      quadrants.push(quadrant);
     }
 
     return quadrants;
   }
 
-  private buildQuadrant(row: number, column: number): Quadrant {
-    let quadrant: Quadrant = new Quadrant();
-    let cells: Cell[][] = this.buildCells(row, column);
+  private buildQuadrant(x: number): Cell[][] {
+    let quadrant: Cell[][] = [];
 
-    quadrant.setCells(cells);
+    for (let y = 0; y < this.ROWS_PER_QUADRANT; y++) {
+      let row: Cell[] = this.buildRow(x, y);
+      quadrant.push(row);
+    }
 
     return quadrant;
   }
 
-  private buildCells(quadrantRow: number, quadrantColumn: number): Cell[][] {
-    let cells: Cell[][] = [];
+  private buildRow(x: number, y: number): Cell[] {
+    let row: Cell[] = [];
 
-    for (let row = 0; row < this.CELL_ROWS_PER_QUADRANT; row++) {
-      let cellRow: Cell[] = [];
-
-      for (let column = 0; column < this.CELLS_PER_ROW; column++) {
-        cellRow.push(new Cell(quadrantRow, quadrantColumn, row, column));
-      }
-
-      cells.push(cellRow);
+    for (let z = 0; z < this.CELLS_PER_ROW; z++) {
+      let cell: Cell = new Cell(x, y, z);
+      row.push(cell);
     }
 
-    return cells;
+    return row;
   }
 }

@@ -1,6 +1,6 @@
 <section class="content">
 
-  <div class="row justify-content-evenly" *ngFor="let row of this.quadrant?.getCells()">
+  <div class="row justify-content-evenly" *ngFor="let row of this.quadrant">
     <div class="col-4 circle" *ngFor="let cell of row">
       <app-cell [cell]="cell"></app-cell>
     </div>
