@@ -8,6 +8,6 @@ import {Board} from "./board.model";
 })
 export class BoardComponent {
   @Input()
-  board?: Board;
+  board: Board = new Board();
 
 }

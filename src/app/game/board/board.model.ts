@@ -1,26 +1,36 @@
-import {Quadrant} from "./quadrant/quadrant.model";
+import {Cell} from "./quadrant/cell/cell.model";
 
 export class Board {
-  private quadrants: Quadrant[][];
+  private board: Cell[][][];
 
   constructor() {
-    this.quadrants = [];
+    this.board = [];
   }
 
-  getQuadrants(): Quadrant[][] {
-    return this.quadrants;
+  getBoard(): Cell[][][] {
+    return this.board;
   }
 
-  setQuadrants(quadrants: Quadrant[][]): void {
-    this.quadrants = quadrants;
+  setBoard(board: Cell[][][]): void {
+    this.board = board;
+  }
+
+  getQuadrant(id: number): Cell[][] {
+    return this.board[id];
+  }
+
+  getCell(x: number, y: number, z: number): Cell {
+    return this.board[x][y][z];
   }
 
   resetCellStates(): void {
-    for (let row of this.quadrants) {
-      for (let quadrant of row) {
-        quadrant.resetCellStates();
+    for (let quadrant of this.board) {
+      for (let row of quadrant) {
+        for (let cell of row) {
+          cell.resetCellState();
+        }
       }
     }
   }
-}
 
+}

@@ -1,7 +1,7 @@
 <section class="container">
 
-  <div class="row" *ngFor="let row of this.board?.getQuadrants()">
-    <div class="col-6 box" *ngFor="let quadrant of row">
+  <div class="row">
+    <div class="col-6 box" *ngFor="let quadrant of this.board.getBoard()">
       <app-quadrant [quadrant]="quadrant"></app-quadrant>
     </div>
   </div>
