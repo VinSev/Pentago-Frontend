@@ -11,7 +11,7 @@ export class CellComponent {
   cell?: Cell;
 
   placeMarble(): void {
-    this.cell?.placeBlackMarble();
+    this.cell?.placeWhiteMarble();
   }
 
 }
